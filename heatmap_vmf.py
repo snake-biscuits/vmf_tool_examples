@@ -13,7 +13,7 @@ import vmf_tool  # noqa E402
 
 # http://heatmaps.tf/api.html
 heatmap_site = "https://heatmaps.tf/data/kills/"
-url_tail = ".json?fields=killer_class,killer_x,killer_y,killer_z,victim_class,victim_x,victim_y,victim_z,team,killer_weapon"
+url_tail = ".json?fields=killer_class,killer_x,killer_y,killer_z,victim_class,victim_x,victim_y,victim_z,team,killer_weapon"  # noqa E501
 
 print("Loading Client Schema...", end="")
 schema = vmf_tool.namespace_from(open("tf2_client_schema"))  # Load Weapon IDs from Client Schema

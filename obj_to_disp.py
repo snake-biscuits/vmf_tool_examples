@@ -1,5 +1,4 @@
 # To be replaced by tools in snake-biscuits/QtPyHammer & BlendHammer
-import itertools
 import vector
 
 
