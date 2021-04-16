@@ -56,3 +56,5 @@ if __name__ == "__main__":
     for filepath in sys.argv[1:]:
         base.raw_namespace.world.solids = obj_solids(filepath)
         base.save_to_file(f"{filepath}.vmf")
+
+    input("Success! Press Enter to Exit")

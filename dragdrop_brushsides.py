@@ -1,48 +1,49 @@
 import sys
-sys.path.insert(0, '../')
-import vmf_tool
+
+sys.path.insert(0, "../")
+import vmf_tool  # noqa E402
 
 # sadly not 100% accurate to compiled values
 # also incredibly buggy
 for file in sys.argv[1:]:
     vmf_file = vmf_tool.vmf_to_dict(open(file))
-    print('***', file.replace('\\', '/').rpartition('/')[-1])
+    print("***", file.replace("\\", "/").rpartition("/")[-1])
     brushes = 0
     brushsides = 0
-    for solid in vmf_file['world']['solids']:
+    for solid in vmf_file["world"]["solids"]:
         brushes += 1
-        brushsides += len(solid['sides'])
-    for entity in vmf_file['entities']:
+        brushsides += len(solid["sides"])
+    for entity in vmf_file["entities"]:
         # finicky and likely unreliable
-        if 'solids' in entity.keys():
-            for solid in entity['solids']:
+        if "solids" in entity.keys():
+            for solid in entity["solids"]:
                 brushes += 1
-                brushsides += len(solid['sides'])
+                brushsides += len(solid["sides"])
 
     fullness = brushes / 8192
-    print(f'{brushes}/8192 brushes ({fullness * 100:.1f}%)', end=' ')
+    print(f"{brushes}/8192 brushes ({fullness * 100:.1f}%)", end=" ")
     if fullness > 1:
         if brushes == 8193:
-            print('one brush too many')
+            print("one brush too many")
         else:
-            print(f'{brushes - 8192} too many brushes')
+            print(f"{brushes - 8192} too many brushes")
     else:
         print()
 
     fullness = brushsides / 65536
-    print(f'{brushsides}/65535 brushsides ({fullness * 100:.1f}%)', end=' ')
+    print(f"{brushsides}/65535 brushsides ({fullness * 100:.1f}%)", end=" ")
     if fullness <= .7:
-        print('well within acceptable paramaters')
+        print("well within acceptable paramaters")
     elif .7 < fullness <= .8:
-        print('quite full actually')
+        print("quite full actually")
     elif .8 < fullness <= .9:
-        print('extremely full')
+        print("extremely full")
     elif .9 < fullness < 1:
-        print('nearly full')
+        print("nearly full")
     elif fullness == 1:
-        print('just right') # sadly command prompt does not support emoji
+        print("just right")  # sadly command prompt does not support emoji
     elif 1 < fullness <= 1.25:
-        print('woah there')
+        print("woah there")
     elif 1.25 < fullness <= 1.5:
         print("let's not get carried away")
     elif 1.5 < fullness <= 1.75:
@@ -50,9 +51,9 @@ for file in sys.argv[1:]:
     elif 1.75 < fullness <= 2:
         print("have you considered making a second map?")
     elif fullness == 2:
-        print('>>> 200% FULL <<<')
+        print(">>> 200% FULL <<<")
     else:
-        print('\n', 'this is fine.' * 80, sep='')
+        print("\n", "this is fine. " * 60, sep="")
     if fullness > 1:
-        print(f'{brushsides - 65536} brushes too many')
-input('Press Enter to exit')
+        print(f"{brushsides - 65536} brushes too many")
+input("Press Enter to exit")
