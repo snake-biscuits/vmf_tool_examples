@@ -1,5 +1,5 @@
 # vmf_tool_examples
- Example scripts for vmf_tool
+ Example scripts for [vmf_tool](https://github.com/QtPyHammer-devs/vmf_tool)
 
 ## To run any script
    - download & unzip [vmf_tool_examples.zip](https://github.com/snake-biscuits/vmf_tool_examples/archive/df52268c88a34ffc0ba403a385a8600b72de768d.zip)
